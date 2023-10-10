@@ -1,0 +1,72 @@
+.container {
+  max-width: 1050px;
+  padding-top: 50px;
+  margin: auto;
+  text-align: center;
+}
+
+.row {
+  justify-content: center;
+}
+
+.input {
+  border-radius: 50px;
+  height: 300px;
+  border: 12px solid #000000;
+}
+.input h1 {
+  font-size: 50px;
+  text-align: center;
+}
+
+input {
+  padding: 5px 10px;
+  font-size: 34px;
+  /* margin-left: 110px; */
+}
+
+.Submit {
+  padding: 5px 15px;
+  font-size: 34px;
+}
+.ClearList {
+  padding: 5px 15px;
+  font-size: 34px;
+}
+
+.center {
+  text-align: center;
+  list-style-position: inside;
+  font-size: 34px;
+}
+
+@media (max-width: 930px) {
+  #myText {
+    width: 200px;
+  }
+  .container {
+    text-align: center;
+  }
+}
+
+@media (max-width: 715px) {
+  .container {
+    text-align: center;
+  }
+  #myText {
+    width: 135px;
+    padding: 3px 7px;
+    font-size: 24px;
+  }
+  .Submit {
+    padding: 3px 7px;
+    font-size: 24px;
+  }
+  .ClearList {
+    padding: 3px 7px;
+    font-size: 24px;
+  }
+  .row {
+    display: contents;
+  }
+}
