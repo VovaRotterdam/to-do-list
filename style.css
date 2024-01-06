@@ -70,3 +70,11 @@ input {
     display: contents;
   }
 }
+
+.done {
+  text-decoration: line-through;
+}
+
+/*#listSpace {
+  background: yellow;
+}*/

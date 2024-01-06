@@ -1,53 +1,73 @@
-let sbt = document.getElementById("Submit");
+let submit = document.getElementById("Submit");
 let cll = document.getElementById("ClearList");
 let txt = document.getElementById("myText");
 let ul = document.getElementById("ul");
 
-sbt.addEventListener("click", (e) => {
-  if (txt.value !== "") {
-    e.preventDefault();
-    // create li
-    let list = document.createElement("li");
-    list.innerHTML = txt.value;
-    ul.appendChild(list);
-    // create delete and done
-    let del = document.createElement("button");
-    let done = document.createElement("button");
-    del.innerHTML = "x";
-    done.innerHTML = "Done";
-    list.appendChild(del);
-    list.appendChild(done);
+function inputLength() {
+  return txt.value.length;
+}
 
-    del.addEventListener("click", () => {
-      list.removeChild(ul);
-    });
 
-    // for (let i = 0; i < del.length; i++) {
-    //   del[i].addEventListener("click", () => {
-    //     del[i].removeChild([0]);
-    //   });
-    // }
-    // clear input
-    txt.value = "";
+function createListElement() {
+  let list = document.createElement("li");
+  let del = document.createElement("button");
+  let done = document.createElement("button");
+  list.innerHTML = txt.value;
+  del.innerHTML = "delete";
+  done.innerHTML = "Done";
+  del.id = "delete";
+  done.id = "done";
+  ul.appendChild(list);
+  list.appendChild(del);
+  list.appendChild(done);
+
+  txt.value = "";
+}
+
+
+function addListAfterClick() {
+  if(inputLength() > 0) {
+    createListElement();
   }
-});
-// clear all list
-cll.addEventListener("click", function () {
-  ul.textContent = "";
-});
+}
 
-// document.getElementById("Submit").onclick = function () {
-//   var myTask = document.getElementById("myText").value;
-//   console.log(myTask);
-// };
+function addListAfterKeypress(event) {
+  if(inputLength() > 0 & event.keyCode === 13) {
+    createListElement();
+  }
+}
 
-// create span
-// let mySpan = document.createElement("span");
-// mySpan.innerHTML = "del";
-// list.appendChild(mySpan);
+function doneTask(task) {
+  if(task.target.id === "done") {
+    console.log("hello world")
+    task.target.parentElement.classList.toggle("done");
+  }
+}
 
-// let close = document.querySelectorAll("span");
-// for (let i = 0; i < close.length; i++) {
-//   close[i].addEventListener("click", () => {
-//     close[i].parentElement.style.display = "none";
-//   });
+function delList(tasklist) {
+  if(tasklist.target.id === "delete") {
+    tasklist.target.parentElement.remove();
+  }
+}
+
+function clearList() {
+  ul.innerHTML = '';
+}
+
+
+
+
+submit.addEventListener("click", addListAfterClick);
+
+txt.addEventListener("keypress", addListAfterKeypress);
+
+ul.addEventListener("click", doneTask);
+
+ul.addEventListener("click", delList);
+
+cll.addEventListener("click", clearList);
+
+
+
+
+
